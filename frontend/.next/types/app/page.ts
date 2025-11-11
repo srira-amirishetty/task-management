@@ -1,4 +1,4 @@
-// File: C:\Users\srira\OneDrive\Desktop\prisma-practise\frontend\src\app\page.tsx
+// File: C:\Users\srira\OneDrive\Desktop\prisma-practise\frontend2\src\app\page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

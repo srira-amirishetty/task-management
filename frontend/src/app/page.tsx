@@ -1,5 +1,5 @@
-
+import HomePage from "./home/page";
 
 export default function Home() {
-  return <div className="text-2xl text-black" ></div>;
+  return <HomePage />;
 }
