@@ -3,7 +3,7 @@
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsSidebarCollapsed } from "@/state";
 import { useGetAuthUserQuery, useGetProjectsQuery } from "@/state/api";
-// import { signOut } from "aws-amplify/auth";
+import { signOut } from "aws-amplify/auth";
 import {
   AlertCircle,
   AlertOctagon,
@@ -38,14 +38,14 @@ const Sidebar = () => {
   );
 
   const { data: currentUser } = useGetAuthUserQuery({});
-  // const handleSignOut = async () => {
-  //   try {
-  //     await signOut();
-  //   } catch (error) {
-  //     console.error("Error signing out: ", error);
-  //   }
-  // };
-  // if (!currentUser) return null;
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
+  if (!currentUser) return null;
   const currentUserDetails = currentUser?.userDetails;
 
   const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl
@@ -181,7 +181,7 @@ const Sidebar = () => {
           </span>
           <button
             className="self-start rounded bg-blue-400 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500 md:block"
-            // onClick={handleSignOut}
+            onClick={handleSignOut}
           >
             Sign out
           </button>

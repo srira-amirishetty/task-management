@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useAppDispatch, useAppSelector } from "@/app/redux";
 import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
 import { useGetAuthUserQuery } from "@/state/api";
-// import { signOut } from "aws-amplify/auth";
+import { signOut } from "aws-amplify/auth";
 import Image from "next/image";
 
 const Navbar = () => {
@@ -15,13 +15,13 @@ const Navbar = () => {
   const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
 
   const { data: currentUser } = useGetAuthUserQuery({});
-  // const handleSignOut = async () => {
-  //   try {
-  //     await signOut();
-  //   } catch (error) {
-  //     console.error("Error signing out: ", error);
-  //   }
-  // };
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
+  };
 
   // if (!currentUser) return null;
   const currentUserDetails = currentUser?.userDetails;
@@ -93,7 +93,7 @@ const Navbar = () => {
           </span>
           <button
             className="hidden rounded bg-blue-400 px-4 py-2 text-xs font-bold text-white hover:bg-blue-500 md:block"
-            // onClick={handleSignOut}
+            onClick={handleSignOut}
           >
             Sign out
           </button>
