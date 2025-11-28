@@ -21,7 +21,9 @@ jobs:
         key: ${{ secrets.EC2_KEY }}
         port: 22
         script: |
-          cd ~/task-management
+          sudo su - << 'EOF'
+          cd /root/task-management
           git pull origin master
           npm install
           pm2 restart backend
+          EOF
